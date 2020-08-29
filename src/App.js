@@ -51,7 +51,6 @@ this.setState({
 console.log('It was cliced');
 }
 */
-// if you are using the state in the component you can differentiate your component in state full and stateless component
 // Hoocs are collection of function which you can use in the functional component
 // useSate allows us to manage state in a functional component
 // useState returns an array with exact two element and always 2 elemtn - 1 st elemtn is our current state and the second
