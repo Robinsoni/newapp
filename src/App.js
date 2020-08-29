@@ -9,11 +9,11 @@ class App extends Component {
         {name:'sachin',age:23},
       ]
   }
-  swithNameHandler = () => {
+  swithNameHandler = (Name) => {
     //this.state.persons[0].name = "Robin" // this is not allowed you can not update the state directly
     this.setState({
       persons:[
-        {name:'Robin',age:25},
+        {name:Name,age:25},
         {name:'Sachin',age:23}
       ]
     })
@@ -25,10 +25,27 @@ class App extends Component {
         <h1>Hi, I'm a react</h1>
         <p>i'm react app and using the jsx</p>
         <button onClick = {this.swithNameHandler}>switch button</button>
-        <Person name = {this.state.persons[0].name} age={this.state.persons[0].age}></Person>
-        <Person name = "Sachin" age="23"></Person>
-        <Person name = "No one" age="Infinity"></Person>
-        <Person name = "NO one again" age="Infinity again">My name</Person> 
+        <Person 
+          name = {this.state.persons[0].name} 
+          age={this.state.persons[0].age}
+          click = {this.swithNameHandler.bind(this,'Max')}
+        >
+        </Person>
+        <Person 
+          name = "Sachin" 
+          age="23">
+
+          </Person>
+        <Person 
+          name = "No one" 
+          age="Infinity">
+
+          </Person>
+        <Person 
+          name = "NO one again"
+          age="Infinity again"
+          click={() => this.swithNameHandler('Robin')} // This will cause the Perfomance issue use bind instead
+          >I'm also a switchName Handler because function refernce passed</Person> 
       </div>
     );
   }
