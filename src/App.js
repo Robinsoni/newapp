@@ -9,22 +9,31 @@ class App extends Component {
         {name:'sachin',age:23},
       ]
   }
-  swithNameHandler = (Name) => {
+  swithNameHandler = (name) => {
     //this.state.persons[0].name = "Robin" // this is not allowed you can not update the state directly
     this.setState({
       persons:[
-        {name:Name,age:25},
+        {name:name,age:25},
         {name:'Sachin',age:23}
       ]
     })
     console.log('It was cliced');
   }
+   changeNameHandler = (event) => {
+    this.setState({
+      persons:[
+        {name:event.target.value, age:25},
+        {name:'Sachin', age:23},
+
+      ]
+    })
+  }
   render() {
     return (
       <div className="App">
-        <h1>Hi, I'm a react</h1>
+        <h1>Hi, I'm a react app, and you are learning it</h1>
         <p>i'm react app and using the jsx</p>
-        <button onClick = {this.swithNameHandler}>switch button</button>
+        <button onClick = {this.swithNameHandler}>switch button</button> // this is not being used as of now
         <Person 
           name = {this.state.persons[0].name} 
           age={this.state.persons[0].age}
@@ -37,12 +46,15 @@ class App extends Component {
 
           </Person>
         <Person 
-          name = "No one" 
-          age="Infinity">
+          name = {this.state.persons[0].name} 
+          age={this.state.persons[0].age}
+          change = {this.changeNameHandler}
+          >
+
 
           </Person>
         <Person 
-          name = "NO one again"
+          name = {this.state.persons[1].name}
           age="Infinity again"
           click={() => this.swithNameHandler('Robin')} // This will cause the Perfomance issue use bind instead
           >I'm also a switchName Handler because function refernce passed</Person> 
