@@ -29,11 +29,18 @@ class App extends Component {
     })
   }
   render() {
+    const style = {
+      backgroundColor:'white',
+      font: 'inherit',
+      border: '1px solid blue',
+      padding: '8px',
+      cursor:'pointer',
+    }
     return (
       <div className="App">
         <h1>Hi, I'm a react app, and you are learning it</h1>
         <p>i'm react app and using the jsx</p>
-        <button onClick = {this.swithNameHandler}>switch button</button> // this is not being used as of now
+        <button style = {style} onClick = {this.swithNameHandler}>switch button</button> // this is not being used as of now
         <Person 
           name = {this.state.persons[0].name} 
           age={this.state.persons[0].age}
