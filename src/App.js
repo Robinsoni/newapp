@@ -15,7 +15,8 @@ class App extends Component {
       persons:[
         {name:name,age:25},
         {name:'Sachin',age:23}
-      ]
+      ],
+      showContent:false,
     })
     console.log('It was cliced');
   }
@@ -24,9 +25,14 @@ class App extends Component {
       persons:[
         {name:event.target.value, age:25},
         {name:'Sachin', age:23},
-
+        
       ]
+      
     })
+  }
+  togglePageContent =() =>{
+    const doesShow = this.state.showContent;
+    this.setState({showContent:!doesShow})
   }
   render() {
     const style = {
@@ -40,26 +46,32 @@ class App extends Component {
       <div className="App">
         <h1>Hi, I'm a react app, and you are learning it</h1>
         <p>i'm react app and using the jsx</p>
-        <button style = {style} onClick = {this.swithNameHandler}>switch button</button> // this is not being used as of now
-        <Person 
-          name = {this.state.persons[0].name} 
-          age={this.state.persons[0].age}
-          click = {this.swithNameHandler.bind(this,'Max')}
-        >
-        </Person>
-        <Person 
-          name = "Sachin" 
-          age="23">
+        <button style = {style} onClick = {this.togglePageContent}>switch button</button>
+        { this.state.showContent ?
+          <div>
+            <Person 
+            name = {this.state.persons[0].name} 
+            age={this.state.persons[0].age}
+            click = {this.swithNameHandler.bind(this,'Max')} >
+              </Person>
+            
+            <Person 
+              name = "Sachin" 
+              age="23">
+            </Person>
+            
+            <Person 
+              name = {this.state.persons[0].name} 
+              age={this.state.persons[0].age}
+              change = {this.changeNameHandler}
+              > 
 
-          </Person>
-        <Person 
-          name = {this.state.persons[0].name} 
-          age={this.state.persons[0].age}
-          change = {this.changeNameHandler}
-          >
 
+              </Person>
+          </div>:null
 
-          </Person>
+        }
+        
         <Person 
           name = {this.state.persons[1].name}
           age="Infinity again"
@@ -69,7 +81,7 @@ class App extends Component {
     );
   }
 }
-
+// all we write in the code bloc is the javascript and we can not write anything else in in it so in 
 // Hoocs are collection of function which you can use in the functional component
 // useState returns an array with exact two element and always 2 elemtn - 1 st elemtn is our current state and the second
 // always be the function which allows us to update this state
