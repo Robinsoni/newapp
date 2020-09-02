@@ -9,17 +9,7 @@ class App extends Component {
         {name:'sachin',age:23},
       ]
   }
-  swithNameHandler = (name) => {
-    //this.state.persons[0].name = "Robin" // this is not allowed you can not update the state directly
-    this.setState({
-      persons:[
-        {name:name,age:25},
-        {name:'Sachin',age:23}
-      ],
-      showContent:false,
-    })
-    console.log('It was cliced');
-  }
+  
    changeNameHandler = (event) => {
     this.setState({
       persons:[
@@ -33,6 +23,11 @@ class App extends Component {
   togglePageContent =() =>{
     const doesShow = this.state.showContent;
     this.setState({showContent:!doesShow})
+  }
+  deletePersonHandler = (personIndex) =>{
+    const persons = this.state.persons
+    persons.splice(personIndex,1)
+    this.setState({persons:persons})
   }
   render() {
     const style = {
@@ -48,8 +43,9 @@ class App extends Component {
       persons = (
         <div>
             {
-            this.state.persons.map(person => {
+            this.state.persons.map((person,index) => {
               return  <Person 
+              click = {() => this.deletePersonHandler(index)}
               name = {person.name} 
               age={person.age}
               />
@@ -65,11 +61,7 @@ class App extends Component {
         <p>i'm react app and using the jsx</p>
         <button style = {style} onClick = {this.togglePageContent}>switch button</button>
         {persons}
-        <Person 
-          name = {this.state.persons[1].name}
-          age="Infinity again"
-          click={() => this.swithNameHandler('Robin')} // This will cause the Perfomance issue use bind instead
-          >I'm also a switchName Handler because function refernce passed</Person> 
+        
       </div>
     );
   }
