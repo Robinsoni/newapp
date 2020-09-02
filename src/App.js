@@ -42,13 +42,11 @@ class App extends Component {
       padding: '8px',
       cursor:'pointer',
     }
-    return (
-      <div className="App">
-        <h1>Hi, I'm a react app, and you are learning it</h1>
-        <p>i'm react app and using the jsx</p>
-        <button style = {style} onClick = {this.togglePageContent}>switch button</button>
-        { this.state.showContent ?
-          <div>
+
+    let  persons = null;
+    if(this.state.showContent){
+      persons = (
+        <div>
             <Person 
             name = {this.state.persons[0].name} 
             age={this.state.persons[0].age}
@@ -65,13 +63,16 @@ class App extends Component {
               age={this.state.persons[0].age}
               change = {this.changeNameHandler}
               > 
-
-
               </Person>
-          </div>:null
-
-        }
-        
+          </div>
+      )
+    }
+    return (
+      <div className="App">
+        <h1>Hi, I'm a react app, and you are learning it</h1>
+        <p>i'm react app and using the jsx</p>
+        <button style = {style} onClick = {this.togglePageContent}>switch button</button>
+        {persons}
         <Person 
           name = {this.state.persons[1].name}
           age="Infinity again"
@@ -81,6 +82,8 @@ class App extends Component {
     );
   }
 }
+
+// Whenever react re-render the component then everything inside the render method gets executed
 // all we write in the code bloc is the javascript and we can not write anything else in in it so in 
 // Hoocs are collection of function which you can use in the functional component
 // useState returns an array with exact two element and always 2 elemtn - 1 st elemtn is our current state and the second
