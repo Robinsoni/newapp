@@ -5,8 +5,8 @@ import Person from './Person/Person'; // should be upper case as Person
 class App extends Component {
   state = {
       persons:[
-        {name:'raghav',age:25},
-        {name:'sachin',age:23},
+        {id:'321',name:'raghav',age:25},
+        {id:'789',name:'sachin',age:23},
       ]
   }
   
@@ -53,6 +53,7 @@ class App extends Component {
               click = {() => this.deletePersonHandler(index)}
               name = {person.name} 
               age={person.age}
+              key = {person.id}
               />
             })
             }
@@ -71,6 +72,11 @@ class App extends Component {
     );
   }
 }
+// react has the virtual DOM where it compares what it would render now and then compares with the previous DOM it rendered
+// then it renderes it
+
+//so for that matter the key element has to be there for it to be distinguise the data correctly. It can be any but unique value as in the case
+// of DB id
 
 // Whenever react re-render the component then everything inside the render method gets executed
 // all we write in the code bloc is the javascript and we can not write anything else in in it so in 
