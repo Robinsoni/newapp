@@ -25,7 +25,12 @@ class App extends Component {
     this.setState({showContent:!doesShow})
   }
   deletePersonHandler = (personIndex) =>{
-    const persons = this.state.persons
+    //const persons = this.state.persons // -bad choice - this method takes the original array as it is refernce typed so mutable and 
+    // and can lead to unpredictable behaviour so what we should do is to copy the array and then set state
+    // good choices
+    //const persons = this.state.persons.splice() // this will make the copy
+    const persons = [...this.state.persons] // this will spread the array element and hence make copy of it
+
     persons.splice(personIndex,1)
     this.setState({persons:persons})
   }
