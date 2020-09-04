@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person'; // should be upper case as Person
 import person from './Person/Person';
+
 class App extends Component {
   state = {
       persons:[
@@ -53,11 +54,18 @@ class App extends Component {
       padding: '8px',
       cursor:'pointer',
     }
-
+    let classes = [];
+    if(this.state.persons.length >=2){
+      classes.push('red')
+    }
+    if(this.state.persons.length <2){
+      classes.push('bold')
+    }
+   
     let  persons = null;
     if(this.state.showContent){
       persons = (
-        <div>
+        <div className={classes.join(' ')}>
             {
             this.state.persons.map((person,index) => {
               console.log(person)
@@ -74,6 +82,11 @@ class App extends Component {
            
         </div>
       )
+      style.backgroundColor = 'red'
+    }
+    if(this.state.persons.length ==0){
+      classes = []
+      style.backgroundColor = '#dbc6c6';
     }
     return (
       <div className="App">
