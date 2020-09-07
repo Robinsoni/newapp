@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person'; // should be upper case as Person
 import person from './Person/Person';
-import Radium from 'radium'
+import Radium,{StyleRoot} from 'radium'
 class App extends Component {
   state = {
       persons:[
@@ -97,6 +97,7 @@ class App extends Component {
       style.backgroundColor = '#dbc6c6';
     }
     return (
+      <StyleRoot>
       <div className="App">
         <h1>Hi, I'm a react app, and you are learning it</h1>
         <p>i'm react app and using the jsx</p>
@@ -104,6 +105,7 @@ class App extends Component {
         {persons}
 
       </div>
+      </StyleRoot>
     );
   }
 }
