@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 //import logo from './logo.svg';
 import './App.css';
 import Person from './Person/Person'; // should be upper case as Person
-import person from './Person/Person';
-import Radium,{StyleRoot} from 'radium'
+//import person from './Person/Person';
+//import styled from 'styled-components'
+//import Radium,{StyleRoot} from 'radium'
 class App extends Component {
   state = {
       persons:[
@@ -97,7 +98,7 @@ class App extends Component {
       style.backgroundColor = '#dbc6c6';
     }
     return (
-      <StyleRoot>
+      
       <div className="App">
         <h1>Hi, I'm a react app, and you are learning it</h1>
         <p>i'm react app and using the jsx</p>
@@ -105,7 +106,7 @@ class App extends Component {
         {persons}
 
       </div>
-      </StyleRoot>
+      
     );
   }
 }
@@ -129,4 +130,4 @@ class App extends Component {
 // on the component file in the special property called the children
 // as you can see the Person tag above will help in importing the compononent and render it with the root
 
-export default Radium(App);
+export default App;
