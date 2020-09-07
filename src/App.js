@@ -5,6 +5,19 @@ import Person from './Person/Person'; // should be upper case as Person
 //import person from './Person/Person';
 //import styled from 'styled-components'
 //import Radium,{StyleRoot} from 'radium'
+
+import styled from 'styled-components';
+const StyledButton = styled.button`
+      background-color:white;
+      font: inherit;
+      border: 1px solid blue;
+      padding: 8px;
+      cursor:pointer;
+      &:hover{
+        background-color:blue;
+        color:black;
+      }
+`;
 class App extends Component {
   state = {
       persons:[
@@ -102,7 +115,7 @@ class App extends Component {
       <div className="App">
         <h1>Hi, I'm a react app, and you are learning it</h1>
         <p>i'm react app and using the jsx</p>
-        <button style = {style} onClick = {this.togglePageContent}>switch button</button>
+        <StyledButton  onClick = {this.togglePageContent}>switch button</StyledButton>
         {persons}
 
       </div>

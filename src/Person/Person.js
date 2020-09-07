@@ -8,7 +8,7 @@ const StyledDiv = styled.div`
         box-shadow: 0 2px 3px #d9d9dd;
         padding: 16px;
         text-align: center;
-        @media (min-width: 500px):{
+        @media (min-width: 500px){
             width: 450px;
         }
 `;
