@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person'; // should be upper case as Person
 import person from './Person/Person';
-
+import Radium from 'radium'
 class App extends Component {
   state = {
       persons:[
@@ -53,6 +53,10 @@ class App extends Component {
       border: '1px solid blue',
       padding: '8px',
       cursor:'pointer',
+      ':hover':{
+        backgroundColor:'blue',
+        color:'black',
+      }
     }
     let classes = [];
     if(this.state.persons.length >=2){
@@ -83,6 +87,10 @@ class App extends Component {
         </div>
       )
       style.backgroundColor = 'red'
+      style[':hover'] = {
+        backgroundColor:'yellow',
+        color:'green',
+      }
     }
     if(this.state.persons.length ==0){
       classes = []
@@ -94,7 +102,7 @@ class App extends Component {
         <p>i'm react app and using the jsx</p>
         <button style = {style} onClick = {this.togglePageContent}>switch button</button>
         {persons}
-        
+
       </div>
     );
   }
@@ -119,4 +127,4 @@ class App extends Component {
 // on the component file in the special property called the children
 // as you can see the Person tag above will help in importing the compononent and render it with the root
 
-export default App;
+export default Radium(App);
