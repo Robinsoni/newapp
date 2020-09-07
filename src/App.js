@@ -8,13 +8,13 @@ import Person from './Person/Person'; // should be upper case as Person
 
 import styled from 'styled-components';
 const StyledButton = styled.button`
-      background-color:white;
+      background-color:${props => props.alt?'red':'green'};
       font: inherit;
       border: 1px solid blue;
       padding: 8px;
       cursor:pointer;
       &:hover{
-        background-color:blue;
+        background-color:${props => props.alt?'yellow':'white'};
         color:black;
       }
 `;
@@ -115,7 +115,7 @@ class App extends Component {
       <div className="App">
         <h1>Hi, I'm a react app, and you are learning it</h1>
         <p>i'm react app and using the jsx</p>
-        <StyledButton  onClick = {this.togglePageContent}>switch button</StyledButton>
+        <StyledButton  alt ={this.state.showContent} onClick = {this.togglePageContent}>switch button</StyledButton>
         {persons}
 
       </div>
