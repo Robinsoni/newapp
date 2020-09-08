@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 //import logo from './logo.svg';
-import './App.css';
+//import  from
+import classes from './App.css';
 import Person from './Person/Person'; // should be upper case as Person
 //import person from './Person/Person';
 //import styled from 'styled-components'
@@ -47,6 +48,7 @@ class App extends Component {
     })
   }
   togglePageContent =() =>{
+    console.log(classes)
     const doesShow = this.state.showContent;
     this.setState({showContent:!doesShow})
   }
@@ -61,29 +63,20 @@ class App extends Component {
     this.setState({persons:persons})
   }
   render() {
-    const style = {
-      backgroundColor:'white',
-      font: 'inherit',
-      border: '1px solid blue',
-      padding: '8px',
-      cursor:'pointer',
-      ':hover':{
-        backgroundColor:'blue',
-        color:'black',
-      }
-    }
-    let classes = [];
+    let btnCalss = [classes.Button];
+    
+    let assignedClasses = [];
     if(this.state.persons.length >=2){
-      classes.push('red')
+      assignedClasses.push(classes.red)
     }
     if(this.state.persons.length <2){
-      classes.push('bold')
+      assignedClasses.push(classes.bold)
     }
    
     let  persons = null;
     if(this.state.showContent){
       persons = (
-        <div className={classes.join(' ')}>
+        <div className={assignedClasses.join(' ')}>
             {
             this.state.persons.map((person,index) => {
               console.log(person)
@@ -100,22 +93,18 @@ class App extends Component {
            
         </div>
       )
-      style.backgroundColor = 'red'
-      style[':hover'] = {
-        backgroundColor:'yellow',
-        color:'green',
-      }
+     btnCalss.push(classes.Red)
     }
     if(this.state.persons.length ==0){
-      classes = []
-      style.backgroundColor = '#dbc6c6';
+      assignedClasses = []
+      //style.backgroundColor = '#dbc6c6';
     }
     return (
       
-      <div className="App">
+      <div className={classes.App}>
         <h1>Hi, I'm a react app, and you are learning it</h1>
         <p>i'm react app and using the jsx</p>
-        <StyledButton  alt ={this.state.showContent} onClick = {this.togglePageContent}>switch button</StyledButton>
+        <button  className={btnCalss.join(' ')} onClick = {this.togglePageContent}>switch button</button>
         {persons}
 
       </div>

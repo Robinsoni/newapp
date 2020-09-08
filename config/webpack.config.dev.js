@@ -164,6 +164,9 @@ module.exports = {
                 loader: require.resolve('css-loader'),
                 options: {
                   importLoaders: 1,
+                  modules: true, // this enebles the css module, the features we are going to be using
+                  localIdentName: '[name]__[local]__[hash:base64:5]' // this will be used by the feature to 
+                  // dynamically generate the unique css class names
                 },
               },
               {

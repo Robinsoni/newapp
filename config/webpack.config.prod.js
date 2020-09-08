@@ -183,6 +183,9 @@ module.exports = {
                         importLoaders: 1,
                         minimize: true,
                         sourceMap: shouldUseSourceMap,
+                        modules: true, // this enebles the css module, the features we are going to be using
+                        localIdentName: '[name]__[local]__[hash:base64:5]', // this will be used by the feature to 
+                  // dynamically generate the unique css class names
                       },
                     },
                     {

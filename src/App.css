@@ -8,3 +8,9 @@
   font-weight: bold;
 }
 
+.Button.Red{
+  background-color: red;
+}
+.Button.Red:hover{
+  background-color: salmon;
+}
