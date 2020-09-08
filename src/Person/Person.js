@@ -2,7 +2,7 @@ import React from 'react';
 //import "./Person.css"
 //import styled from 'styled-components';
 //import Radium from 'radium'
-import classes from "./Person.css"
+import classes from "./Person.module.css"
 /*const StyledDiv = styled.div`
         width:60%;
         margin:16px auto;
