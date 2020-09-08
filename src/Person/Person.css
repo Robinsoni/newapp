@@ -1,7 +1,7 @@
 .Person{
     width:60%;
     margin:16px auto;
-    box-shadow: 0 2px 3px #3030bee7;
+    box-shadow: 0 2px 3px #020202e7;
     padding: 16px;
     text-align: center;
 }
@@ -12,7 +12,7 @@
 .bold{
     font-weight: bold;
 }
-@media (min-width: 500px):{
+@media (min-width: 500px){
     .Person{
         width: 450px;
     }

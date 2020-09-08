@@ -1,8 +1,9 @@
 import React from 'react';
 //import "./Person.css"
-import styled from 'styled-components';
+//import styled from 'styled-components';
 //import Radium from 'radium'
-const StyledDiv = styled.div`
+import classes from "./Person.css"
+/*const StyledDiv = styled.div`
         width:60%;
         margin:16px auto;
         box-shadow: 0 2px 3px #d9d9dd;
@@ -11,7 +12,7 @@ const StyledDiv = styled.div`
         @media (min-width: 500px){
             width: 450px;
         }
-`;
+`;*/
 const person = (props) => {
     const style = {
         '@media (min-width: 500px)':{
@@ -21,11 +22,11 @@ const person = (props) => {
 
 return (
     
-    <StyledDiv>
+    <div className ={classes.Person}>
         <p onClick={props.click}>My name is  {props.name} and my age is {props.age}</p>
         <p>{props.children}</p>
         <input type="text" onChange={props.change} value={props.name} />
-    </StyledDiv>
+    </div>
 )
     
 }
