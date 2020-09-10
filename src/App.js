@@ -7,9 +7,6 @@ import Person from './Person/Person'; // should be upper case as Person
 //import styled from 'styled-components'
 //import Radium,{StyleRoot} from 'radium'
 
-// for production errors - if you want to define it explicitely
-import ErrorBoundary from './ErrorBoundary/ErroBoundary';
-
 import styled from 'styled-components';
 const StyledButton = styled.button`
       background-color:${props => props.alt?'red':'green'};
@@ -83,16 +80,14 @@ class App extends Component {
             {
             this.state.persons.map((person,index) => {
               console.log(person)
-              // The key has to be at the outer element in this case it's ErrorBoundary
-              return  <ErrorBoundary key = {person.id} ><Person 
+              return  <Person 
               click = {() => this.deletePersonHandler(index)}
               name = {person.name} 
               age={person.age}
-              
+              key = {person.id}
               
               change ={(event) => this.changeNameHandler(event,person.id)}
               />
-              </ErrorBoundary>
             })
             }
            

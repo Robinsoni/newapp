@@ -19,10 +19,6 @@ const person = (props) => {
             width: '450px'
         }
     };
-    const rnd = Math.random();
-    if (rnd > 0.7){
-        throw new Error('Something went wrong')
-    }
 
 return (
     
