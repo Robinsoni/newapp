@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 //import logo from './logo.svg';
 //import  from
 import classes from './App.css';
-import Person from './Person/Person'; // should be upper case as Person
+//import Person from '../components/Persons/Persons/Person'; // should be upper case as Person
+import Persons from '../components/Persons/Persons';
+import Cockpit from '../components/cockpit/cockpit'
 //import person from './Person/Person';
 //import styled from 'styled-components'
 //import Radium,{StyleRoot} from 'radium'
@@ -24,11 +26,12 @@ class App extends Component {
       persons:[
         {id:'321',name:'raghav',age:25},
         {id:'789',name:'sachin',age:23},
+        {id:'780',name:'Aayu',age:11}
       ]
   }
   
    changeNameHandler = (event,id) => {
-    
+    console.log()
     const personIndex = this.state.persons.findIndex((p) => {
       return p.id === id;
     })
@@ -41,7 +44,7 @@ class App extends Component {
     person.name = event.target.value
     const persons = [...this.state.persons]
     persons[personIndex] = person
-    //console.log(persons);return;
+    //console.log(persons);reteventurn;
     this.setState({
       persons:persons
       
@@ -53,6 +56,7 @@ class App extends Component {
     this.setState({showContent:!doesShow})
   }
   deletePersonHandler = (personIndex) =>{
+    alert(personIndex)
     //const persons = this.state.persons // -bad choice - this method takes the original array as it is refernce typed so mutable and 
     // and can lead to unpredictable behaviour so what we should do is to copy the array and then set state
     // good choices
@@ -77,20 +81,11 @@ class App extends Component {
     if(this.state.showContent){
       persons = (
         <div className={assignedClasses.join(' ')}>
-            {
-            this.state.persons.map((person,index) => {
-              console.log(person)
-              return  <Person 
-              click = {() => this.deletePersonHandler(index)}
-              name = {person.name} 
-              age={person.age}
-              key = {person.id}
-              
-              change ={(event) => this.changeNameHandler(event,person.id)}
+              <Persons 
+                persons = {this.state.persons}
+                click = {this.deletePersonHandler}
+                change ={this.changeNameHandler}
               />
-            })
-            }
-           
         </div>
       )
      btnCalss.push(classes.Red)
@@ -102,13 +97,9 @@ class App extends Component {
     return (
       
       <div className={classes.App}>
-        <h1>Hi, I'm a react app, and you are learning it</h1>
-        <p>i'm react app and using the jsx</p>
-        <button  className={btnCalss.join(' ')} onClick = {this.togglePageContent}>switch button</button>
+        <Cockpit toggleBtn={this.togglePageContent} showContent = {this.state.showContent}/>
         {persons}
-
       </div>
-      
     );
   }
 }
