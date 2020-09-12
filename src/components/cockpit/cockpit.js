@@ -10,7 +10,7 @@ const cockpit = (props) => {
     
    return(
     <div className = {Classes.Cockpit}>
-        <h1>Hi, I'm a react app, and you are learning it</h1>
+        <h1>{props.title}</h1>
         <p>i'm react app and using the jsx</p>
         <button className={btnClass.join(' ')}  onClick = {props.toggleBtn}>switch button</button>
     </div>
