@@ -77,7 +77,13 @@ class App extends Component {
   componentDidMount(){
     console.log('[App.js] .. componentDidMount')
   }
-  compon
+  shouldComponentUpdate(){
+    console.log('[App.js] shouldComponentUpdate will be used where you want to stop/allow the rending')
+    return true // if you return false then it will not allow to update the state // true is default
+  }
+  componentDidUpdate(){
+    console.log('[App.js] componentDidUpdate')
+  }
   render() {
     console.log('[App.js] ..  the render function')
     let btnCalss = [classes.Button];
