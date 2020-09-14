@@ -22,12 +22,20 @@ const StyledButton = styled.button`
       }
 `;
 class App extends Component {
+  constructor(props){
+    super(props);
+    console.log('[App.js] -- constructor')
+  }
   state = {
       persons:[
         {id:'321',name:'raghav',age:25},
         {id:'789',name:'sachin',age:23},
         {id:'780',name:'Aayu',age:11}
       ]
+  }
+  static getDerivedStateFromProps(props, state){
+    console.log('[App.js] getDerivedStateFromProps',props);
+    return state
   }
   
    changeNameHandler = (event,id) => {
@@ -66,7 +74,12 @@ class App extends Component {
     persons.splice(personIndex,1)
     this.setState({persons:persons})
   }
+  componentDidMount(){
+    console.log('[App.js] .. componentDidMount')
+  }
+  compon
   render() {
+    console.log('[App.js] ..  the render function')
     let btnCalss = [classes.Button];
     
     let assignedClasses = [];
