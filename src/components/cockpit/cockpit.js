@@ -47,5 +47,8 @@ const cockpit = (props) => {
 }
 //
 //
-
-export default cockpit;
+// Now to use similar functionality to that of shouldComponentUpdate in class based component
+// for function compnent we use react memoization so basically store
+// so basically if there is no change with this component then react will give back this stored
+// component
+export default React.memo(cockpit);
