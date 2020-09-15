@@ -1,21 +1,23 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import Person from './Person/Person';
-class Persons extends Component{
+class Persons extends PureComponent{
     static getDerivedStateFromProps(props, state){
         console.log('[Person.js] getDerivedStatefromProps');
         return state
     }
     //UNSAFE_componentWillReceiveProps
-    shouldComponentUpdate(nextProps, nextState){
+    /*shouldComponentUpdate(nextProps, nextState){
         console.log('[Persons.js] shouldComponentUpdate')
-        if(nextProps.persons !== this.props.persons){
+        if(nextProps.persons !== this.props.persons){ // so there can be many properties in 
+            // this if statement to see the updates and if we want to implement for every property
+            // then we can use the pureComponent instead of component in class based
             // 
             return true;
         }else{
             return false;
         }
         return true;
-    }
+    }*/
     getSnapshotBeforeUpdate(prevProps, prevState){
         console.log('[Perons.js] getSnapshotBeforeUpdate;');
         return { message: 'Snapshot'}
