@@ -9,7 +9,7 @@ const cockpit = (props) => {
 
 // if we do not pass the array dependency in as the second argument then it combines componentDidMount
 // and compnonentDidUpdate
-    setTimeout(() => {
+    const timer = setTimeout(() => {
         alert('Saved data to cloud! ')
     },1000)
     // so the same way we have function  componentWillUnmount in  class based we can use here 
@@ -17,11 +17,19 @@ const cockpit = (props) => {
     // it runs before the main useEffect function runs, but after the first render cycle
 
     return () => {
+        //clearTimeout(timer); // this is the cleanup work
         console.log('[cockpit.js] .. cleanup work in useEffect')
     }
     }, []) // this is an imporvement and it will only update when the perons changes
     // if you want the useEffect to be executed only when it runs for the 1 time and you use [] array
     // instead of [props.persons]
+
+    useEffect(() =>{
+        console.log('[Cockpit] .. 2nd useEffect')
+        return () =>{
+            console.log('[cockpit.js ].. second clean up in useEffect')
+        }
+    })
     let btnClass = [Classes.Button];
     if(props.showContent){
         btnClass.push(Classes.Red)

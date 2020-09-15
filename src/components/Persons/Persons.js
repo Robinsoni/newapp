@@ -8,6 +8,12 @@ class Persons extends Component{
     //UNSAFE_componentWillReceiveProps
     shouldComponentUpdate(nextProps, nextState){
         console.log('[Persons.js] shouldComponentUpdate')
+        if(nextProps.persons !== this.props.persons){
+            // 
+            return true;
+        }else{
+            return false;
+        }
         return true;
     }
     getSnapshotBeforeUpdate(prevProps, prevState){
