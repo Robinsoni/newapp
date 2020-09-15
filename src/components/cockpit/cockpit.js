@@ -12,6 +12,13 @@ const cockpit = (props) => {
     setTimeout(() => {
         alert('Saved data to cloud! ')
     },1000)
+    // so the same way we have function  componentWillUnmount in  class based we can use here 
+    //an anonymous function which will be returned and run after every render cycle so basically
+    // it runs before the main useEffect function runs, but after the first render cycle
+
+    return () => {
+        console.log('[cockpit.js] .. cleanup work in useEffect')
+    }
     }, []) // this is an imporvement and it will only update when the perons changes
     // if you want the useEffect to be executed only when it runs for the 1 time and you use [] array
     // instead of [props.persons]
