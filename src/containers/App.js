@@ -5,6 +5,8 @@ import classes from './App.css';
 //import Person from '../components/Persons/Persons/Person'; // should be upper case as Person
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/cockpit/cockpit'
+import withClass from '../hoc/withClass'
+import Auxiliary from '../hoc/Auxiliary'
 //import person from './Person/Person';
 //import styled from 'styled-components'
 //import Radium,{StyleRoot} from 'radium'
@@ -116,7 +118,7 @@ class App extends Component {
     }
     return (
       
-      <div className={classes.App}>
+      <Auxiliary>
         <button onClick={() => {this.setState({showCockpit:!this.state.showCockpit})}}>Show Cockpit</button>
         {this.state.showCockpit?
           <Cockpit /*persons={this.state.persons}*/ title={this.props.title} toggleBtn={this.togglePageContent} /*showContent = {this.state.showContent}*//>
@@ -124,7 +126,7 @@ class App extends Component {
         :null}
         
         {persons}
-      </div>
+      </Auxiliary>
     );
   }
 }
@@ -148,4 +150,4 @@ class App extends Component {
 // on the component file in the special property called the children
 // as you can see the Person tag above will help in importing the compononent and render it with the root
 
-export default App;
+export default withClass(App,classes.App);
