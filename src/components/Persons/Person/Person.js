@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import Auxiliary from '../../../hoc/Auxiliary'
 //import "./Person.css"
 //import styled from 'styled-components';
@@ -9,11 +9,11 @@ class Person extends Component {
     
     render(){
         return (
-            <Auxiliary>
+            <Fragment>
                 <p onClick={this.props.click}>My name is  {this.props.name} and my age is {this.props.age}</p>
                 <p>{this.props.children}</p>
                 <input type="text" onChange={this.props.change} value={this.props.name} />
-            </Auxiliary>
+            </Fragment>
         )
     }
 }
