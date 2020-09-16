@@ -128,11 +128,6 @@ class App extends Component {
     );
   }
 }
-// You can see in the rendering function we have one parent div which is enclosing every other element
-// and if you want to add adjacent div then react won't allow it. But that is not entirely true
-// becuase as you can see at other places it has returned an array using map function so that's basically
-// only allowed in react when you will pass the key as an argument so that react can efficiently 
-// update or reordered the element as it required
 // react has the virtual DOM where it compares what it would render now and then compares with the previous DOM it rendered
 // then it renderes it
 
