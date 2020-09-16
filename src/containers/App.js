@@ -35,6 +35,7 @@ class App extends Component {
         {id:'780',name:'Aayu',age:11}
       ],
       showCockpit:true,
+      counter:0,
   }
   static getDerivedStateFromProps(props, state){
     console.log('[App.js] getDerivedStateFromProps',props);
@@ -56,10 +57,13 @@ class App extends Component {
     const persons = [...this.state.persons]
     persons[personIndex] = person
     //console.log(persons);reteventurn;
-    this.setState({
-      persons:persons
-      
-    })
+    this.setState((prevState,props) => {
+      return {
+      persons:persons,
+      //counter:this.state.counter+1, // becuase react to not update the state immediately so this might
+      // give unexpected results
+      counter:prevState.counter+1, // best practice to update state which depends on the old state
+    }})
   }
   togglePageContent =() =>{
     console.log(classes)
