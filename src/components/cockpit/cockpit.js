@@ -1,12 +1,13 @@
-import React, { useEffect } from 'react'
+import React, { useEffect,useRef } from 'react'
 import Classes from './cockpit.css'
 const cockpit = (props) => {
+    const toggleBtnRef = useRef();
     useEffect(() =>{
         console.log('[Cockpit.js] useEffect'); // this will run for every render cycle and even if 
         // the cockpit component is not being updated, so that needs to be optimized 
         //Now what if we were to send an HTTP request here but we only want to do that when the component is rendered
 //for the first time and not for every re-render cycle,
-
+        toggleBtnRef.current.click()
 // if we do not pass the array dependency in as the second argument then it combines componentDidMount
 // and compnonentDidUpdate
     const timer = setTimeout(() => {
@@ -40,7 +41,7 @@ const cockpit = (props) => {
     <div className = {Classes.Cockpit}>
         <h1>{props.title}</h1>
         <p>i'm react app and using the jsx</p>
-        <button className={btnClass.join(' ')}  onClick = {props.toggleBtn}>switch button</button>
+        <button ref={toggleBtnRef} className={btnClass.join(' ')}  onClick = {props.toggleBtn}>switch button</button>
     </div>
    )
     
