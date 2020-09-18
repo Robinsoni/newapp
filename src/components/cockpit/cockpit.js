@@ -42,6 +42,7 @@ const cockpit = (props) => {
         <h1>{props.title}</h1>
         <p>i'm react app and using the jsx</p>
         <button ref={toggleBtnRef} className={btnClass.join(' ')}  onClick = {props.toggleBtn}>switch button</button>
+        <button onClick={props.login}>Login</button>
     </div>
    )
     

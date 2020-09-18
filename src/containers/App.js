@@ -7,6 +7,7 @@ import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/cockpit/cockpit'
 import withClass from '../hoc/withClass'
 import Auxiliary from '../hoc/Auxiliary'
+import AuthContext from '../context/AuthContext' 
 //import person from './Person/Person';
 //import styled from 'styled-components'
 //import Radium,{StyleRoot} from 'radium'
@@ -25,7 +26,7 @@ const StyledButton = styled.button`
 `;
 class App extends Component {
   constructor(props){
-    super(props);
+    super();
     console.log('[App.js] -- constructor')
   }
   state = {
@@ -36,18 +37,26 @@ class App extends Component {
       ],
       showCockpit:true,
       counter:0,
+      isAuthenticated : false,
   }
+  loginHandeler = () => {
+    console.log('helllow[Im in Login Handeler]')
+    this.setState({
+      isAuthenticated: !this.state.isAuthenticated
+    })
+  }; 
   static getDerivedStateFromProps(props, state){
     console.log('[App.js] getDerivedStateFromProps',props);
     return state
   }
-  
+ 
    changeNameHandler = (event,id) => {
     console.log()
     const personIndex = this.state.persons.findIndex((p) => {
       return p.id === id;
     })
     //
+    
 
    const person = {
       ...this.state.persons[personIndex]
@@ -124,12 +133,14 @@ class App extends Component {
       
       <Auxiliary>
         <button onClick={() => {this.setState({showCockpit:!this.state.showCockpit})}}>Show Cockpit</button>
-        {this.state.showCockpit?
-          <Cockpit /*persons={this.state.persons}*/ title={this.props.title} toggleBtn={this.togglePageContent} /*showContent = {this.state.showContent}*//>
+        <AuthContext.Provider value={{isAuthenticated:this.state.isAuthenticated,login:this.loginHandeler}}>
+         {this.state.showCockpit?
+          <Cockpit /*persons={this.state.persons}*/ login={this.loginHandeler} title={this.props.title} toggleBtn={this.togglePageContent} /*showContent = {this.state.showContent}*//>
 
         :null}
         
         {persons}
+        </AuthContext.Provider>
       </Auxiliary>
     );
   }

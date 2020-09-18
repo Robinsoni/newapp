@@ -6,6 +6,7 @@ import Auxiliary from '../../../hoc/Auxiliary'
 //import Radium from 'radium'
 import classes from "./Person.module.css"
 import withClass from '../../../hoc/withClass'
+import AuthContext from '../../../context/AuthContext'
 class Person extends Component {
     //inp = document.querySelectorAll('input')
     constructor(props){
@@ -21,6 +22,8 @@ class Person extends Component {
     render(){
         return (
             <withClass>
+                <AuthContext.Consumer>{(context) => context.isAuthenticated ? <p>Authenticated</p>:<p>Please Login</p>}</AuthContext.Consumer>
+                
                 <p onClick={this.props.click}>My name is  {this.props.name} and my age is {this.props.age}</p>
                 <p>{this.props.children}</p>
                 <input 
