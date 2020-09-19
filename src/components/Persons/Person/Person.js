@@ -13,16 +13,19 @@ class Person extends Component {
         super();
         this.inputElementRef = React.createRef();
     }
+    // to access the context in componentDidMount React provides contextType
+    static contextType = AuthContext;
     componentDidMount(){
         //document.querySelector('input').focus()
         //this.inputElement.focus()
+        console.log(this.context.isAuthenticated)
         console.log(this.inputElementRef)
         this.inputElementRef.current.focus()
     }
     render(){
         return (
             <withClass>
-                <AuthContext.Consumer>{(context) => context.isAuthenticated ? <p>Authenticated</p>:<p>Please Login</p>}</AuthContext.Consumer>
+                {this.context.isAuthenticated  ? <p>Authenticated</p>:<p>Please Login</p>}
                 
                 <p onClick={this.props.click}>My name is  {this.props.name} and my age is {this.props.age}</p>
                 <p>{this.props.children}</p>
